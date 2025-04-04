@@ -1,0 +1,15 @@
+/* Footer.module.css */
+.footer {
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+    align-items: center;
+    padding: 1px;
+    font-size: 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+
