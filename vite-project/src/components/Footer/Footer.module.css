@@ -1,6 +1,6 @@
 /* Footer.module.css */
 .footer {
-    background-color: #000000;
+    background-color: var(--preto);
     color: #fff;
     text-align: center;
     align-items: center;

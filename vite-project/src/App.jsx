@@ -1,13 +1,20 @@
+import Cabecalho from './components/Cabecalho/Cabecalho'
+import Conteudo from './components/Conteudo/Conteudo'
+import Footer from './components/Footer/Footer'
+
+import { Inicial } from './pages'
+
 import './App.css'
-import './components'
-import Footer from './components/Footer/Footer.jsx'
-import { Inicial }  from './pages/Inicial/Inicial.jsx'
+
+
 
 const  App = () => {
   return (
     <div>
-      
-      <Inicial></Inicial>
+      <Cabecalho />
+      <Conteudo>
+        <Inicial></Inicial>
+      </Conteudo>
       <Footer></Footer>
     </div>
   )
