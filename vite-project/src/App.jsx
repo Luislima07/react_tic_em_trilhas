@@ -1,23 +1,15 @@
-import Cabecalho from './components/Cabecalho/Cabecalho'
-import Conteudo from './components/Conteudo/Conteudo'
-import Footer from './components/Footer/Footer'
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./Router";
 
-import { Inicial } from './pages'
+import "./App.css";
 
-import './App.css'
-
-
-
-const  App = () => {
+const App = () => {
   return (
-    <div>
-      <Cabecalho />
-      <Conteudo>
-        <Inicial></Inicial>
-      </Conteudo>
-      <Footer></Footer>
-    </div>
-  )
-}
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
 
-export default App
+  );
+};
+
+export default App;

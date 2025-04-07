@@ -1,2 +1,2 @@
 export * from './ListaTarefas';
-export	* from "./ListaTarefasItems";
+export	* from './ListaTarefasItems';
