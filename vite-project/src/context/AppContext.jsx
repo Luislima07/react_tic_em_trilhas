@@ -7,16 +7,25 @@ export const AppContextProvider = (props) => {
     const { children } = props;
 
     const [tarefas, setTarefas] = useState([]);
+
+    const [loadingCarregar, setLoandingCarregar] = useState(false);
+    const [loadingCriar, setLoandingCriar] = useState(false);
+    const [loadingEditar, setLoandingEditar] = useState(null);
+    const [loadingDeletar, setLoandingDeletar] = useState(null);
     
     const carregarTarefas = async () => {
+        setLoandingCarregar(true)
+
         const { data = [ ]} = await api.get('/tarefas');
 
         setTarefas([
             ...data,
         ])
+        setLoandingCarregar(false)
     };  
 
     const adicionarTarefa = async (nomeTarefa) => {
+        setLoandingCriar(true);
         const { data: tarefa } = await api.post('/tarefas', {
             nome: nomeTarefa, 
         });
@@ -24,9 +33,12 @@ export const AppContextProvider = (props) => {
         setTarefas(estadoAtual => {
             return [...estadoAtual, tarefa];
         });
+        setLoandingCriar(false);
     };
 
     const removerTarefa = async (idTarefa) => {
+        setLoandingDeletar(idTarefa);
+
         await api.delete(`tarefas/${idTarefa}`);
 
         setTarefas(estadoAtual => {
@@ -36,9 +48,12 @@ export const AppContextProvider = (props) => {
                 ...tarefasAtualizadas
             ];
         });
+        setLoandingDeletar(null);
     };
 
     const editarTarefa = async (idTarefa, nomeTarefa) => {
+        setLoandingEditar(idTarefa);
+
         const { data: tarefasAtualizada } = await api.put(`tarefas/${idTarefa}`, {
             nome: nomeTarefa,
         });
@@ -49,6 +64,7 @@ export const AppContextProvider = (props) => {
             );
             return [...tarefasAtualizadas];
         });
+        setLoandingEditar(null);
     };
         
     useEffect(() => { 
@@ -61,6 +77,10 @@ export const AppContextProvider = (props) => {
             adicionarTarefa,
             removerTarefa,
             editarTarefa,
+            loadingCarregar,
+            loadingCriar,
+            loadingEditar,
+            loadingDeletar,
         }}>
             {children}
         </AppContext.Provider>

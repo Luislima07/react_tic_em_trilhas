@@ -6,3 +6,4 @@ export * from './CampoTexto';
 export * from './Botao';
 export * from './Botao/constant';
 export * from './ListaTarefas';
+export * from './Loading';
